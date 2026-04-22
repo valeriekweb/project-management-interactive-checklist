@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PM Coordination Cards</title>
+  <title>PM Sanity Checklist</title>
   <style>
     :root {
       --bg: #f4f6fb;
@@ -39,9 +39,6 @@
 
       --indigo: #6271e3;
       --indigo-soft: #f1f3ff;
-
-      --slate: #eef2f7;
-      --warning: #f5c242;
     }
 
     * { box-sizing: border-box; }
@@ -77,8 +74,9 @@
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fill, 320px);
       gap: 18px;
+      justify-content: center;
       align-items: start;
     }
 
@@ -126,14 +124,6 @@
       display: block;
     }
 
-    .hero-copy {
-      font-size: 16px;
-      line-height: 1.5;
-      color: rgba(255,255,255,0.92);
-      margin: 0 0 18px;
-      max-width: 24ch;
-    }
-
     .hero-points {
       display: grid;
       gap: 10px;
@@ -142,7 +132,11 @@
       color: rgba(255,255,255,0.95);
     }
 
-    .hero-points div { display: flex; gap: 10px; align-items: flex-start; }
+    .hero-points div {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
 
     .card-header {
       display: flex;
@@ -159,6 +153,7 @@
       gap: 12px;
       align-items: flex-start;
       flex: 1;
+      min-width: 0;
     }
 
     .badge {
@@ -193,6 +188,7 @@
       font-size: 30px;
       line-height: 1;
       opacity: 0.95;
+      flex: 0 0 auto;
     }
 
     .card-body {
@@ -227,15 +223,6 @@
       accent-color: #3b7ddd;
     }
 
-    .checkbox {
-      width: 18px;
-      height: 18px;
-      border-radius: 4px;
-      border: 1.8px solid #9aa7b5;
-      margin-top: 2px;
-      background: #fff;
-    }
-
     .tip {
       margin-top: auto;
       display: flex;
@@ -246,8 +233,6 @@
       font-size: 15px;
       line-height: 1.35;
     }
-
-    .tip strong { font-weight: 700; }
 
     .soft-green { background: var(--green-soft); }
     .soft-gold { background: var(--gold-soft); }
@@ -328,7 +313,7 @@
     .footer-strip {
       margin-top: 22px;
       display: grid;
-      grid-template-columns: 1.3fr 1.5fr 0.8fr;
+      grid-template-columns: 1.4fr 1.5fr 0.9fr;
       gap: 18px;
     }
 
@@ -354,32 +339,37 @@
     }
 
     .mindset-grid, .triggers-grid {
-      padding: 16px;
+      padding: 24px 24px 20px 24px;
       display: grid;
-      gap: 14px;
+      gap: 18px 18px;
+      align-items: start;
     }
 
     .mindset-grid {
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(2, 1fr);
     }
 
     .triggers-grid {
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(2, 1fr);
     }
 
     .mini-item {
       display: grid;
-      grid-template-columns: 38px 1fr;
+      grid-template-columns: 28px minmax(0, 1fr);
       gap: 10px;
       align-items: start;
-      font-size: 14px;
+      font-size: 13px;
       line-height: 1.35;
+      min-width: 0;
+      word-break: normal;
+      overflow-wrap: anywhere;
     }
 
     .mini-item .mini-icon {
-      font-size: 28px;
+      font-size: 22px;
       line-height: 1;
       text-align: center;
+      margin-top: 1px;
     }
 
     .confidence {
@@ -411,35 +401,37 @@
     }
 
     @media (max-width: 1100px) {
-      .footer-strip,
+      .footer-strip {
+        grid-template-columns: 1fr;
+      }
       .mindset-grid,
       .triggers-grid {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
 
     @media (max-width: 760px) {
       body { padding: 18px; }
-      .footer-strip,
       .mindset-grid,
       .triggers-grid {
         grid-template-columns: 1fr;
       }
       .hero-title { font-size: 26px; }
+      .grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
   <div class="page">
     <div class="intro">
-      <h1>PM Coordination Cards</h1>
-      <p>Each card is standalone, so you can copy one card, a row of cards, or the whole set into your own page. Because apparently remembering routine coordination tasks requires industrial design now.</p>
+      <h1>PM Sanity Checklist</h1>
+      <p>Each card is standalone, so you can copy one card, a row of cards, or the whole set into your own page.</p>
     </div>
 
     <section class="grid">
       <article class="card card--hero">
         <div class="hero-icon">📋</div>
-        <h2 class="hero-title">PM <span>Coordination</span> Checklist</h2>
+        <h2 class="hero-title">PM <span>Sanity</span> Checklist</h2>
         <p class="hero-copy">You may not own the work, but you do own making sure it keeps moving.</p>
         <div class="hero-points">
           <div><span>★</span><span>Be proactive.</span></div>
@@ -461,8 +453,8 @@
         </div>
         <div class="card-body">
           <ul class="checklist">
-            <li><input type="checkbox" /><span>Confirm <strong>date + day of week</strong></span></li>
-            <li><input type="checkbox" /><span>Confirm <strong>time + timezone</strong></span></li>
+            <li><input type="checkbox" /><span>Confirm date + day of week</span></li>
+            <li><input type="checkbox" /><span>Confirm time + timezone</span></li>
             <li><input type="checkbox" /><span>Check for conflicts with key attendees</span></li>
             <li><input type="checkbox" /><span>Add clear title + purpose</span></li>
             <li><input type="checkbox" /><span>Attach agenda or expected outcome</span></li>
@@ -470,7 +462,7 @@
             <li><input type="checkbox" /><span>Set a reminder buffer</span></li>
           </ul>
         </div>
-        <div class="tip soft-green"><span>💡</span><span>Slow down for 10 seconds before sending invites. That tiny pause prevents stupid calendar crimes.</span></div>
+        <div class="tip soft-green"><span>💡</span><span>Slow down for 10 seconds before sending invites. That tiny pause prevents embarrassing calendar mix-ups.</span></div>
       </article>
 
       <article class="card accent-gold">
@@ -479,20 +471,21 @@
             <div class="badge gold">2</div>
             <div>
               <h2>Before / After Major Milestones</h2>
+              <div class="card-subtitle">Availability, handoff, and wrap-up</div>
             </div>
           </div>
           <div class="icon">🚩</div>
         </div>
         <div class="card-body">
           <ul class="checklist">
-            <li><input type="checkbox" /><span>Ask who is on <strong>PTO in the next 1 to 2 weeks</strong></span></li>
+            <li><input type="checkbox" /><span>Ask who is taking time off in the next 1 to 2 weeks</span></li>
             <li><input type="checkbox" /><span>Confirm team availability and capacity reset</span></li>
             <li><input type="checkbox" /><span>Identify immediate follow-up work</span></li>
-            <li><input type="checkbox" /><span>Flag risks that appear right after completion</span></li>
-            <li><input type="checkbox" /><span>Send a quick “what just happened” summary</span></li>
+            <li><input type="checkbox" /><span>Collect and share key artifacts in one place (slides, images, docs, recordings)</span></li>
+            <li><input type="checkbox" /><span>Send a quick summary of what shipped, what is next, and who owns follow-ups</span></li>
           </ul>
         </div>
-        <div class="tip soft-gold"><span>⭐</span><span>Don’t wait to be asked. Milestone done means PTO check and summary go out automatically.</span></div>
+        <div class="tip soft-gold"><span>⭐</span><span>Don’t wait to be asked. Milestone done means time-off check, artifacts, and summary go out automatically.</span></div>
       </article>
 
       <article class="card accent-pink">
@@ -501,13 +494,14 @@
             <div class="badge pink">3</div>
             <div>
               <h2>Closing a Project or Major Phase</h2>
+              <div class="card-subtitle">Retros, learnings, and follow-through</div>
             </div>
           </div>
           <div class="icon">🏁</div>
         </div>
         <div class="card-body">
           <ul class="checklist">
-            <li><input type="checkbox" /><span>Schedule the retrospective immediately</span></li>
+            <li><input type="checkbox" /><span>Schedule the retrospective</span></li>
             <li><input type="checkbox" /><span>Capture what went well</span></li>
             <li><input type="checkbox" /><span>Capture what did not</span></li>
             <li><input type="checkbox" /><span>Capture what to change next time</span></li>
@@ -515,7 +509,7 @@
             <li><input type="checkbox" /><span>Acknowledge team effort</span></li>
           </ul>
         </div>
-        <div class="tip soft-pink"><span>❤️</span><span>Offer the retro before anyone reminds you. That’s the difference between leading and reacting.</span></div>
+        <div class="tip soft-pink"><span>❤️</span><span>Offer the retro before anyone reminds you, and ask possible participants when they want it.</span></div>
       </article>
 
       <article class="card accent-blue">
@@ -524,6 +518,7 @@
             <div class="badge blue">4</div>
             <div>
               <h2>Weekly Rhythm Check</h2>
+              <div class="card-subtitle">Status, risks, and changing priorities</div>
             </div>
           </div>
           <div class="icon">🔄</div>
@@ -538,7 +533,7 @@
             <li><input type="checkbox" /><span>Update tracking tools to match reality</span></li>
           </ul>
         </div>
-        <div class="tip soft-blue"><span>🎯</span><span>Your weekly reset is where future chaos either starts or gets prevented. Irritatingly powerful habit.</span></div>
+        <div class="tip soft-blue"><span>🎯</span><span>Your weekly reset is where future chaos either starts or gets prevented.</span></div>
       </article>
 
       <article class="card accent-purple">
@@ -547,6 +542,7 @@
             <div class="badge purple">5</div>
             <div>
               <h2>Before Any Meeting You Run</h2>
+              <div class="card-subtitle">Purpose, outcome, and the right people</div>
             </div>
           </div>
           <div class="icon">👥</div>
@@ -557,18 +553,41 @@
             <li><input type="checkbox" /><span>Define the desired outcome</span></li>
             <li><input type="checkbox" /><span>Prepare the key questions in advance</span></li>
             <li><input type="checkbox" /><span>Identify who actually needs to speak</span></li>
-            <li><input type="checkbox" /><span>Kill the meeting if it should have been a message</span></li>
+            <li><input type="checkbox" /><span>Cancel the meeting if it should have been a message</span></li>
           </ul>
         </div>
-        <div class="tip soft-purple"><span>⚡</span><span>No purpose, no meeting. Humans adore calendars full of nonsense, so you’ll have to resist for them.</span></div>
+        <div class="tip soft-purple"><span>⚡</span><span>Go in with a clear purpose, the right attendees, and a plan for what needs to happen.</span></div>
+      </article>
+
+      <article class="card accent-purple">
+        <div class="card-header">
+          <div class="card-header-left">
+            <div class="badge purple">6</div>
+            <div>
+              <h2>In the Meeting</h2>
+              <div class="card-subtitle">Attendance, recording, and clarity</div>
+            </div>
+          </div>
+          <div class="icon">🎙️</div>
+        </div>
+        <div class="card-body">
+          <ul class="checklist">
+            <li><input type="checkbox" /><span>Confirm all critical participants are in the meeting</span></li>
+            <li><input type="checkbox" /><span>Ask if it is okay to record</span></li>
+            <li><input type="checkbox" /><span>Start the recording</span></li>
+            <li><input type="checkbox" /><span>Restate the goal if the discussion starts drifting</span></li>
+          </ul>
+        </div>
+        <div class="tip soft-purple"><span>🎧</span><span>A small check at the start saves painful follow-up later.</span></div>
       </article>
 
       <article class="card accent-mint">
         <div class="card-header">
           <div class="card-header-left">
-            <div class="badge mint">6</div>
+            <div class="badge mint">7</div>
             <div>
               <h2>After Any Meeting</h2>
+              <div class="card-subtitle">Decisions, follow-ups, and shared materials</div>
             </div>
           </div>
           <div class="icon">📝</div>
@@ -578,18 +597,20 @@
             <li><input type="checkbox" /><span>Send summary, decisions, and next steps</span></li>
             <li><input type="checkbox" /><span>Assign clear owners, not “the team”</span></li>
             <li><input type="checkbox" /><span>Set deadlines</span></li>
+            <li><input type="checkbox" /><span>Share useful links, docs, artifacts, and recordings</span></li>
             <li><input type="checkbox" /><span>Update tracking tools immediately</span></li>
           </ul>
         </div>
-        <div class="tip soft-mint"><span>✉️</span><span>Close the loop fast. If it isn’t written down, people will remember three different fake versions.</span></div>
+        <div class="tip soft-mint"><span>✉️</span><span>Close the loop fast. If it isn’t written down, people will remember different versions.</span></div>
       </article>
 
       <article class="card accent-orange">
         <div class="card-header">
           <div class="card-header-left">
-            <div class="badge orange">7</div>
+            <div class="badge orange">8</div>
             <div>
               <h2>Communication Reality Check</h2>
+              <div class="card-subtitle">Visibility, assumptions, and loose ends</div>
             </div>
           </div>
           <div class="icon">💬</div>
@@ -601,15 +622,16 @@
             <li><input type="checkbox" /><span>Is anything ambiguous that will bite later?</span></li>
           </ul>
         </div>
-        <div class="tip soft-orange"><span>📣</span><span>Over-communicate a little now so you don’t spend next week doing archaeological digs through Slack.</span></div>
+        <div class="tip soft-orange"><span>📣</span><span>Over-communicate a little now so you do not spend next week digging through old threads.</span></div>
       </article>
 
       <article class="card accent-indigo">
         <div class="card-header">
           <div class="card-header-left">
-            <div class="badge indigo">8</div>
+            <div class="badge indigo">9</div>
             <div>
               <h2>Be Proactive: Offer Updates</h2>
+              <div class="card-subtitle">Regular updates without waiting to be asked</div>
             </div>
           </div>
           <div class="icon">📨</div>
@@ -623,15 +645,16 @@
             <li><input type="checkbox" /><span>Tailor updates to the audience</span></li>
           </ul>
         </div>
-        <div class="tip soft-indigo"><span>🛫</span><span>People trust the PM who surfaces information before anyone starts wondering what’s going on.</span></div>
+        <div class="tip soft-indigo"><span>🛫</span><span>People trust the PM who surfaces information before anyone starts wondering what is going on.</span></div>
       </article>
 
       <article class="card accent-purple">
         <div class="card-header">
           <div class="card-header-left">
-            <div class="badge purple">9</div>
+            <div class="badge purple">10</div>
             <div>
               <h2>Pre-“I’m Done” for the Day Check</h2>
+              <div class="card-subtitle">Tomorrow’s prep and today’s loose ends</div>
             </div>
           </div>
           <div class="icon">📋</div>
@@ -644,7 +667,7 @@
             <li><input type="checkbox" /><span>Close the loop on one lingering item</span></li>
           </ul>
         </div>
-        <div class="tip soft-purple"><span>🌙</span><span>Set up tomorrow before logging off. It’s dull, but so is waking up confused.</span></div>
+        <div class="tip soft-purple"><span>🌙</span><span>Set up tomorrow before logging off so you are not starting cold the next day.</span></div>
       </article>
 
       <article class="card patterns">
@@ -659,7 +682,7 @@
           </div>
           <div class="pattern-row">
             <div class="pattern-icon">👥</div>
-            <div><strong>PTO blind spots</strong><span>Tie PTO checks directly to milestone completion every single time.</span></div>
+            <div><strong>Capacity Blind Spots</strong><span>Tie time-off and availability checks directly to milestone completion every single time.</span></div>
           </div>
           <div class="pattern-row">
             <div class="pattern-icon">🚩</div>
@@ -675,7 +698,7 @@
 
     <section class="footer-strip">
       <article class="footer-card">
-        <div class="label">Coordination Mindset</div>
+        <div class="label">Mindset</div>
         <div class="mindset-grid">
           <div class="mini-item"><div class="mini-icon">👥</div><div>You do not need to own the work to drive it forward.</div></div>
           <div class="mini-item"><div class="mini-icon">💬</div><div>Clear communication is your biggest lever.</div></div>
@@ -685,7 +708,7 @@
       </article>
 
       <article class="footer-card">
-        <div class="label">Use Repeatable Triggers</div>
+        <div class="label">Repeatable Checkpoints</div>
         <div class="triggers-grid">
           <div class="mini-item"><div class="mini-icon">🏁</div><div><strong>Milestone ends</strong><br>Check PTO and schedule retro.</div></div>
           <div class="mini-item"><div class="mini-icon">📅</div><div><strong>Meeting created</strong><br>Run the scheduling checklist.</div></div>
@@ -697,7 +720,7 @@
       <article class="footer-card confidence">
         <div class="big-icon">🤍</div>
         <h3>Consistent systems build confidence.</h3>
-        <p>Not glamorous, just effective. Which is annoyingly the whole point.</p>
+        <p>Not glamorous, just effective.</p>
       </article>
     </section>
   </div>
